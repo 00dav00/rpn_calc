@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './rpn_calculator'
+require_relative '../rpn_calculator'
 require 'minitest/autorun'
 
 describe RpnCalculator do
@@ -41,6 +41,7 @@ describe RpnCalculator do
       it 'returns the result for division operations when params are correct' do
         assert_equal(2.5, RpnCalculator.new.calc([5.0, 2.0], ['/']))
         assert_equal(-1, RpnCalculator.new.calc([3, 15, -5], ['/', '/']))
+        # NOTE: Division by 0
       end
 
       it 'returns the result for combined operations when params are correct' do
@@ -78,3 +79,4 @@ describe RpnCalculator do
     end
   end
 end
+

@@ -1,4 +1,9 @@
+# frozen_string_literal: true
+
+# Class to process proccess operations in RPN notation
 class RpnCalculator
+  SUPPORTED_OPERATIONS = '+-*/'
+
   attr_accessor :memo
 
   def initialize
