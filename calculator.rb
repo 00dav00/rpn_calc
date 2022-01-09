@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'rpn_calculator'
-require_relative 'console_input_parser'
+require_relative 'console_input_processor'
 
-calculator = RpnCalculator.new
+processor = ConsoleInputProcessor.new
 
 loop do
   print '> '
@@ -13,8 +12,7 @@ loop do
   break if input == 'q'
 
   begin
-    parsed_input = ConsoleInputParser.parse(input)
-    p calculator.calc(parsed_input[:operands], parsed_input[:operators])
+    p processor.process!(input)
   rescue ArgumentError => e
     p e.message
   end

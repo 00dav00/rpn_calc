@@ -4,28 +4,31 @@
 class RpnCalculator
   SUPPORTED_OPERATIONS = '+-*/'
 
-  attr_accessor :memo
-
-  def initialize
-    @memo = 0
-  end
+  attr_accessor :operand_memo, :operator_memo
 
   def calc(operands, operators)
     validate_params!(operands, operators)
 
-    acc = operands.size == operators.size ? @memo : operands.pop
+    acc = operands.pop
 
     operands.reverse.each_with_index do |number, index|
       acc = [number, acc].reduce(operators[index].to_sym)
     end
 
-    @memo = acc
+    @operand_memo = acc
   end
 
-  def validate_params!(operands, operators)
-    message = 'Invalid number of operands or operators'
+  def can_resolve?(operands:, operators:)
+    return false if operands.empty? || operators.empty?
 
-    raise ArgumentError, message if operands.size < operators.size
-    raise ArgumentError, message if operands.size > operators.size + 1
+    operands.size == operators.size + 1
+  end
+
+  private
+
+  def validate_params!(operands, operators)
+    return if can_resolve?(operands: operands, operators: operators)
+
+    raise ArgumentError, 'Invalid number of operands or operators'
   end
 end
