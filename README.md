@@ -41,18 +41,18 @@ Run tests
 --------------------
 
 To run tests navigate to the project directory and run:
-````
+```
 # for all tests
 > rake test 
 
 # for a single test file
-> ruby tests/file_i_want_to_test`
+> ruby tests/file_i_want_to_test
 ```
 
 Limitations
 --------------------
 - The only operations supported are sum (`+`), subtraction (`-`), multiplication (`*`) and division (`/`)
-- Division by 0 exception is not controlled
+- Division by 0 exception is not controlled and will store `"Infinity"` in memo, making subsequent operations fail.
 - when the input is a single term, either and operand or an operator, it will try to be added to it's corresponding group, for example:
 ```
 > 1
