@@ -69,7 +69,7 @@ Limitations
 Example Input/Output
 --------------------
 
-Use your best judgment as far as the format is concerned, as long as it makes sense to the end user. Your calculator should at the minimum handle the following examples. 
+
 
     > 5 
     5
